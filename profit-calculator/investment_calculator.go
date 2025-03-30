@@ -37,10 +37,7 @@ func main() {
 	expenses = getFloatInput("Please enter your expenses: ")
 	taxRate = getFloatInput("Please enter your taxRate: ")
 
-	earningsBeforeTax := revenue - expenses
-	profit := earningsBeforeTax * (1 - (taxRate / 100))
-
-	ratio := earningsBeforeTax / profit
+	earningsBeforeTax, profit, ratio := doTheCalcs(revenue, expenses, taxRate)
 
 	fmt.Printf("Earnings Before Tax (EBT): $%.2f\n", earningsBeforeTax)
 	fmt.Printf("Profit After Tax: $%.2f\n", profit)
@@ -55,6 +52,14 @@ func getFloatInput(message string) (userInput float64) {
 		fmt.Println("Failed to read input")
 		return 0.00
 	}
+
+	return
+}
+
+func doTheCalcs(revenue, expenses, taxRate float64) (earningsBeforeTax, profit, ratio float64) {
+	earningsBeforeTax = revenue - expenses
+	profit = earningsBeforeTax * (1 - (taxRate / 100))
+	ratio = earningsBeforeTax / profit
 
 	return
 }
