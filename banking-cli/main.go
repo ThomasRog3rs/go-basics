@@ -40,9 +40,9 @@ func main() {
 			fmt.Scan(&withdrawAmount)
 			if withdrawAmount > balance {
 				fmt.Println("You don't have that much money, please select a smaller ammount!")
-			} else {
-				balance = balance - withdrawAmount
+				break
 			}
+			balance = balance - withdrawAmount
 		case 4:
 			fmt.Println("Goodbye")
 		default:
