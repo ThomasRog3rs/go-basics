@@ -6,6 +6,7 @@ import (
 
 func main() {
 	var currentOption int = 0
+	balance := 0.00
 
 	fmt.Println("Welcome to Go Bank!")
 
@@ -19,18 +20,38 @@ func main() {
 		fmt.Print("Please enter your option: ")
 		fmt.Scan(&currentOption)
 
+		fmt.Println("")
+		fmt.Println("-----------Your Choice:-------------")
+		fmt.Println("")
+
 		switch currentOption {
 		case 1:
-			fmt.Println("Your balance")
+			fmt.Println("Your balance: $", balance)
 		case 2:
-			fmt.Println("Give us your money")
+			depositAmount := 0.00
+			fmt.Println("Current balance: $", balance)
+			fmt.Print("How much to deposit?: ")
+			fmt.Scan(&depositAmount)
+			balance += depositAmount
 		case 3:
-			fmt.Println("Here is your money")
+			withdrawAmount := 0.00
+			fmt.Println("Current balance: $", balance)
+			fmt.Print("How much to withdraw?: ")
+			fmt.Scan(&withdrawAmount)
+			if withdrawAmount > balance {
+				fmt.Println("You don't have that much money, please select a smaller ammount!")
+			} else {
+				balance = balance - withdrawAmount
+			}
 		case 4:
 			fmt.Println("Goodbye")
 		default:
 			fmt.Println("Invalid option")
 		}
+
+		fmt.Println("")
+		fmt.Println("------------------------------------")
+		fmt.Println("")
 	}
 
 }
